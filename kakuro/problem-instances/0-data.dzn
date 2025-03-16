@@ -1,0 +1,18 @@
+n = 12; % 6 white cells
+m = 8; % 4 horizontal hints + 4 vertical hints
+
+v = [ 4, 22, 11, 16, 14,  14, 15, 10 ]; % hint values
+
+I = [
+    % horizontal sums
+    {1, 2}, % sum 4
+    {3, 4, 5, 6}, % sum 22
+    {7, 8, 9, 10}, % sum 11
+    {11, 12}, % sum 16
+    {7, 3}, % sum 14
+    {1, 4, 8, 11}, % sum 14
+    {2, 5, 9, 12}, % sum 15
+    {6, 10} % sum 10
+];
+
+% solution: [1, 3, 9, 4, 2, 7, 5, 2, 1, 3, 7, 9]

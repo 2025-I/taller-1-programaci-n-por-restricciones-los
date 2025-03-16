@@ -1,19 +1,32 @@
 include "globals.mzn";
 
-int: n; % Número de celdas en el problema
-set of int: DOMINIO = 1..9; % valores posibles en las celdas
-array[1..n] of var DOMINIO: x; % Variables del problema
+% Problem parameters
+par int: n; % Number of white cells
+set of int: CELLS = 1..n; % Set of cells
 
-int: num_hints;
-array[1..num_hints] of int: hints; % Sumas objetivo
-array[1..num_hints] of set of int: groups; % Grupos de celdas
+array[CELLS] of var 1..9: x; % Variables for the white cells (values to find, solution)
 
-% Restricciones
-constraint forall(i in 1..num_hints) (
-    sum(j in groups[i]) (x[j]) = hints[i] /\
-    alldifferent([x[j] | j in groups[i]])
-);
+par int: m; % Number of hints
+set of int: HINTS = 1..m; % Set of hints
 
+array[HINTS] of int: v; % Values of the hints
+array[HINTS] of set of CELLS: I; % Sets of cells for each hint
+
+% Assertions to validate the input data
+constraint assert(n > 0, "El número de celdas blancas (n) debe ser mayor que 0.");
+constraint assert(m > 0, "El número de pistas (m) debe ser mayor que 0.");
+constraint assert(length(v) == m, "El número de valores de pistas (v) debe ser igual a m.");
+constraint assert(length(I) == m, "El número de conjuntos de celdas (I) debe ser igual a m.");
+constraint assert(forall(h in HINTS)(forall(i in I[h])(i in CELLS)), "Todos los índices de celdas en I deben estar en el rango de 1 a n.");
+
+% Constraints
+% Description: For each hint h, the sum of the values of the cells in I[h] must be equal to v[h].
+constraint forall(h in HINTS)(sum(i in I[h])(x[i]) = v[h]);
+% Description: For each hint h, the values of the cells in I[h] must all be different.
+constraint forall(h in HINTS)(alldifferent([x[i] | i in I[h]]));
+
+% Solve the problem
 solve satisfy;
 
-output ["\n"] ++ [show(x[i]) ++ if i mod 9 == 0 then "\n" else " " endif | i in 1..n];
+% Output
+output [show(x)];

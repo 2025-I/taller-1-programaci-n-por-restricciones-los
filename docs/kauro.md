@@ -1,6 +1,7 @@
-## Test model
+## Testear el modelo
 
 ```bash
-cd kakuro
-minizinc kakuro.mzn problem-instances/1-data.dzn
+minizinc kakuro/kakuro.mzn kakuro/problem-instances/0-data.dzn
+minizinc kakuro/kakuro.mzn kakuro/problem-instances/1-data.dzn
+minizinc kakuro/kakuro.mzn kakuro/problem-instances/2-data.dzn
 ```

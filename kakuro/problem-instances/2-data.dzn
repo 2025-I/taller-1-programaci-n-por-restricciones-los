@@ -1,0 +1,18 @@
+n = 10; % Total white cells
+m = 8; % 4 horizontal hints and 4 vertical hints
+
+v = [4, 22, 23, 7, 12, 18, 19, 7]; % hint values
+
+I = [
+    % horizontal sums
+    {1, 2}, % sum 4
+    {3, 4, 5}, % sum 22
+    {6, 7, 8}, % sum 23
+    {9, 10}, % sum 7
+
+    % vertical sums
+    {1, 3}, % sum 12
+    {2, 4, 6}, % sum 18
+    {5, 7, 9}, % sum 19
+    {8, 10} % sum 7
+];
