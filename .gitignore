@@ -1,0 +1,6 @@
+# MiniZinc specific
+*.fzn
+*.ozn
+*.mzn.json
+*.mzc
+*.sol
