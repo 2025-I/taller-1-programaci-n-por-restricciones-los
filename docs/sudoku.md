@@ -43,3 +43,34 @@ output [
 
 # 5.2 Estrategias de Distribución y Resultados
 
+
+```bash
+minizinc sudoku/sudoku.mzn sudoku/problem-instances/0-data.dzn
+minizinc sudoku/sudoku.mzn sudoku/problem-instances/1-data.dzn
+minizinc sudoku/sudoku.mzn sudoku/problem-instances/2-data.dzn
+```
+
+Se aplicaron las siguientes estrategias de distribución:
+
+
+
+| Estrategia   | Tiempo de Ejecución | Observaciones |
+|--------------|--------------------|---------------|
+| Estrategia 1 | 138ms          | a.Cumple con las restricciones, no números repetidos en filas, columnas o bloques. b. Cada sub-cuadrado contiene valores únicos del 1 al 9 |
+| Estrategia 2 | 141ms           | a. Ligera variación en complejidad respecto a la 1 por tiempo ejecución. b. Cumple con las restricciones, no números repetidos en filas, columnas o bloques  |
+| Estrategia 3 | 138ms           | a. Aparentemente igualada con la 1 y mejor que la 2 ligeramente. b. Cumple con las restricciones, no números repetidos en filas, columnas o bloques. c. El patrón de números parece un poco más disperso en comparación a las otras estrategias  |
+
+---
+
+
+# 5.2.1 Analisis de Distintas Estrategias de Búsqueda
+
+---
+
+# 6.2 Evidencias de Ejecución
+
+![Caso 1](./images/sudoku1.jpg)
+#### Estrategia 2
+![Caso 2](./images/sudoku2.jpg)
+#### Estrategia 3
+![Caso 3](./images/sudoku3.jpg)

@@ -25,6 +25,21 @@ constraint forall(h in HINTS)(sum(i in I[h])(x[i]) = v[h]);
 % Description: For each hint h, the values of the cells in I[h] must all be different.
 constraint forall(h in HINTS)(alldifferent([x[i] | i in I[h]]));
 
+% Solve strategies
+% solve :: int_search(
+%     x,               % Variables to explore
+%     first_fail,      % Strategy: select the variable with the smallest domain
+%     indomain_min,    % Assign the smallest possible value first
+%     complete         % Complete (classic backtracking)
+% ) satisfy;
+
+%  solve :: int_search(
+%      x,               
+%      most_constrained, % Select the variable involved in the most constraints
+%      indomain_random, % Assign values in random order
+%      complete          
+%  ) satisfy;
+
 % Solve the problem
 solve satisfy;
 

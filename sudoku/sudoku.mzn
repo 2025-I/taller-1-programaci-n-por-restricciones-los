@@ -16,7 +16,15 @@ constraint forall (i, j in 1..3) (                                  % los digito
   ])
 );
 
-solve satisfy;
+% Estrategia 1: input_order con indomain_min
+% solve :: int_search([solution[i, j] | i in 1..9, j in 1..9], input_order, indomain_min) satisfy;
+
+% Estrategia 2: first_fail con indomain_max
+%solve :: int_search([solution[i, j] | i in 1..9, j in 1..9], first_fail, indomain_max) satisfy;
+
+% Estrategia 3: smallest con indomain_min
+ solve :: int_search([solution[i, j] | i in 1..9, j in 1..9], smallest, indomain_min) satisfy;
+
 
 output [
     if j == 1 then "\n" else "" endif ++ show(solution[i, j]) ++ " "
