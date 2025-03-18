@@ -74,3 +74,13 @@ Se aplicaron las siguientes estrategias de distribución:
 ![Caso 2](./images/sudoku2.jpg)
 #### Estrategia 3
 ![Caso 3](./images/sudoku3.jpg)
+
+# 7.2 Análisis comparativo
+
+- La estrategia `first_fail` con `indomain_max` presentó un tiempo de ejecución ligeramente mayor (141ms) en comparación con las estrategias `input_order` y `smallest`, ambas con 138ms. Esto sugiere que `first_fail`, aunque prioriza las variables más restringidas, no fue la opción más eficiente en este caso particular.
+- Las estrategias `input_order` con `indomain_min` y `smallest` con `indomain_min` lograron tiempos similares (138ms), mostrando eficiencia al abordar las variables en orden natural o de menor valor. Sin embargo, `smallest` presentó un patrón de números ligeramente más disperso, lo que sugiere una variación en la exploración del espacio de búsqueda.
+- Aunque las diferencias en el tiempo de ejecución fueron mínimas, la estrategia `first_fail` resultó más consistente en problemas con mayor restricción, siendo potencialmente más escalable para sudokus de mayor complejidad.
+
+# 7.2.1 
+
+- Las estrategias `input_order` y `smallest` resultaron ser más eficientes que first_fail en este caso, logrando menores tiempos de ejecución. Esto sugiere que en problemas con restricciones menos complejas, las estrategias más simples pueden ofrecer mejores resultados en términos de eficiencia temporal.
